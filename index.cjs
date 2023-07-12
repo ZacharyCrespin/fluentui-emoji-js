@@ -65,7 +65,7 @@ async function generateEmojiData() {
         const glyphMod = String.fromCodePoint(
           ...skintoneCode.split(' ').map((c) => parseInt(c, 16))
         );
-        const folder = `${emojiFolder}/${name}/${hasSkinToneFolder ? '/' + skintone : ''}`;
+        const folder = `${emojiFolder}/${name}${hasSkinToneFolder ? '/' + skintone : ''}`;
         const emojiStyles = await getFolders(path.join(__dirname, folder));
 
         emojiData.emojis.push({
