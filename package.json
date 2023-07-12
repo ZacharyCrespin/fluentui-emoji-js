@@ -1,0 +1,26 @@
+{
+  "name": "fluentui-emoji-js",
+  "version": "1.0.0",
+  "description": "A JavaScript wrapper for Microsoft's Fluent Emojis",
+  "main": "index.cjs",
+  "scripts": {
+    "generate": "node . --generate",
+    "test": "node ./tests.mjs && node ./tests.cjs",
+    "dev": "npm run generate && npm run test"
+  },
+  "keywords": [
+    "emoji"
+  ],
+  "author": "Zachary Crespin <contact@zacharyc.site> (https://zacharyc.site)",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ZacharyCrespin/fluentui-emoji-js.git"
+  },
+  "bugs": {
+    "url": "https://github.com/ZacharyCrespin/fluentui-emoji-js/issues"
+  },
+  "devDependencies": {
+    "eslint": "^8.44.0"
+  }
+}

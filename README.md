@@ -1,15 +1,47 @@
-# Fluent Emoji
-
-Fluent Emoji are a collection of familiar, friendly, and modern emoji from Microsoft.
+# fluentui-emoji-js
+### A JavaScript wrapper for Microsoft's [Fluent Emojis](https://github.com/microsoft/fluentui-emoji).
 
 ![Fluent Emoji](art/readme_banner.webp)
 
-## Contact
+## Usage
+### Install
+```bash
+npm install fluentui-emoji-js
+```
 
-Please feel free to [open a GitHub issue](https://github.com/microsoft/fluentui-emoji/issues/new) and assign to the following points of contact with questions or requests.
+### Import
+```js
+const emoji = require('fluentui-emoji-js')
+// or
+import * as emoji from 'fluentui-emoji-js'
+```
 
-- Jason Custer([@jasoncuster](https://github.com/jasoncuster)) / Spencer Nelson([@spencer-nelson](https://github.com/spencer-nelson)) - Design
+### Examples
+#### Common JS
+```cjs
+const emoji = require('fluentui-emoji-js')
 
-## Code of Conduct
+emoji.fromGlyph('👋','3D').then((emojiFile) => {
+  console.log(emojiFile)
+})
+```
 
-This project has adopted the [Microsoft Open Source Code of Conduct](https://opensource.microsoft.com/codeofconduct). For more information see the [Code of Conduct FAQ](https://opensource.microsoft.com/codeofconduct/faq/) or contact opencode@microsoft.com with any additional questions or comments.
+#### ES Module
+```mjs
+import * as emoji from 'fluentui-emoji-js'
+
+const emojiFile = await emoji.fromGlyph('👋','3D')
+console.log(emojiFile)
+```
+
+### More Info
+fluentui-emoji-js has 2 main functions `fromGlyph(glyph, style)` and `fromCode(code, style)`. Both return the location of the emoji image relative to the base emoji folder.
+
+`fromGlyph(glyph, style)`
+- `glyph`: string contaning an emoji
+- `style`: string `'3D'`, `'Color'`, `'Flat'`, or `'High Contrast'`
+
+`fromCode(code, style)`
+- `code`: string contaning the unicode for an emoji
+  - `code` should be just the hexcode. ex.`'1f44b'` not `'U+1F44B'`
+- `style`: string `'3D'`, `'Color'`, `'Flat'`, or `'High Contrast'`
