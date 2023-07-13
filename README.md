@@ -1,6 +1,8 @@
 # fluentui-emoji-js
 ### A JavaScript wrapper for Microsoft's [Fluent Emojis](https://github.com/microsoft/fluentui-emoji).
 
+[View on NPM](https://www.npmjs.com/package/fluentui-emoji-js) | [View Live Demo](https://fluentui-emoji-js-demo.netlify.app)
+
 ![Fluent Emoji](art/readme_banner.webp)
 
 ## Usage

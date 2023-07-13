@@ -25,9 +25,7 @@ const styles = [
 // Retrieve command-line arguments
 const args = process.argv.slice(2);
 
-let emojiData = {
-  emojis: []
-}
+let emojiData = []
 
 // Get all the folders in a directory
 async function getFolders(dir) {
@@ -68,8 +66,7 @@ async function generateEmojiData() {
         const folder = `${emojiFolder}/${name}${hasSkinToneFolder ? '/' + skintone : ''}`;
         const emojiStyles = await getFolders(path.join(__dirname, folder));
 
-        emojiData.emojis.push({
-          // glyph,
+        emojiData.push({
           glyph: glyphMod,
           unicode,
           folder,
@@ -80,7 +77,7 @@ async function generateEmojiData() {
       const folder = `${emojiFolder}/${name}`;
       const emojiStyles = await getFolders(path.join(__dirname, folder));
 
-      emojiData.emojis.push({
+      emojiData.push({
         glyph,
         unicode,
         folder,
@@ -96,7 +93,6 @@ async function generateEmojiData() {
   }
 
   // Save emojiData to json file
-  emojiData.lastSave = new Date;
   await fs.writeFile(path.join(__dirname, emojiDataFile), JSON.stringify(emojiData))
   console.log(`Generated ${emojiDataFile}`)
 }
@@ -120,7 +116,7 @@ async function getEmoji(key, q, style) {
     console.log('Invalad style');
     return;
   }
-  const data = emojiData.emojis.find(item => item[key] == q);
+  const data = emojiData.find(item => item[key] == q);
   if (!data) {
     console.log('Emoji not found');
     return;
