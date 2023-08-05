@@ -36,6 +36,19 @@ const emojiFile = await emoji.fromGlyph('👋','3D')
 console.log(emojiFile)
 ```
 
+## Displaying the emoji
+Both `fromGlyph(glyph, style)` and `fromCode(code, style)` return the location of the emoji image relative to the base emoji folder. You can download the assets folder from the [fluentui-emoji repo](https://github.com/microsoft/fluentui-emoji) or use a service like [jsdelivr](https://jsdelivr.com) to get the emoji image.
+
+#### Getting emoji image via jsdelivr
+```js
+const emojiImage = document.querySelector('#emojiImage');
+const emoji = '🍕';
+
+emoji.fromGlyph(emoji,'3D').then((emojiFile) => {
+  emojiImage.src = `https://cdn.jsdelivr.net/gh/microsoft/fluentui-emoji@latest/assets${emojiFile}`
+})
+```
+
 ### More Info
 fluentui-emoji-js has 2 main functions `fromGlyph(glyph, style)` and `fromCode(code, style)`. Both return the location of the emoji image relative to the base emoji folder.
 
