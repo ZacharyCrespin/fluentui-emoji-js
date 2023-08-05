@@ -65,22 +65,36 @@ async function generateEmojiData() {
         );
         const folder = `${emojiFolder}/${name}${hasSkinToneFolder ? '/' + skintone : ''}`;
         const emojiStyles = await getFolders(path.join(__dirname, folder));
+        let images = {}
+        for (let index = 0; index < emojiStyles.length; index++) {
+          const style = emojiStyles[index];
+          const image = await getFiles(path.join(__dirname, folder, style));
+          images[style] = image
+        }
 
         emojiData.push({
           glyph: glyphMod,
           unicode,
-          folder,
+          folder: folder.replace(emojiFolder, ""),
+          images,
           emojiStyles
         })
       }
     } else {
       const folder = `${emojiFolder}/${name}`;
       const emojiStyles = await getFolders(path.join(__dirname, folder));
+      let images = {}
+      for (let index = 0; index < emojiStyles.length; index++) {
+        const style = emojiStyles[index];
+        const image = await getFiles(path.join(__dirname, folder, style));
+        images[style] = image
+      }
 
       emojiData.push({
         glyph,
         unicode,
-        folder,
+        folder: folder.replace(emojiFolder, ""),
+        images,
         emojiStyles
       })
     }
@@ -122,9 +136,9 @@ async function getEmoji(key, q, style) {
     return;
   }
   const folder = `${data.folder}/${style}`;
-  const image = await getFiles(path.join(__dirname, folder));
+  const image = data.images[style];
   if (image.length == 1) {
-    return `${folder}/${image}`.replace(emojiFolder, "");
+    return `${folder}/${image}`;
   } else {
     console.log('Unexpected folder contents');
     return;
