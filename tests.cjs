@@ -56,7 +56,7 @@ emoji.fromGlyph('not an emoji','3D').then((emojiFile) => {
   console.log("undefined is good", emojiFile)
 })
 
-// invalad style
+// invalid style
 emoji.fromGlyph('👳🏽‍♂️','not a style').then((emojiFile) => {
   console.log("undefined is good", emojiFile)
 })

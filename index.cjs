@@ -127,7 +127,7 @@ async function getEmoji(key, q, style) {
   await loadEmojiData();
   // Even if this is valid that does not mean that emoji has that style
   if (!styles.includes(style)) {
-    console.log('Invalad style');
+    console.log('Invalid style');
     return;
   }
   const data = emojiData.find(item => item[key] == q);
@@ -145,12 +145,26 @@ async function getEmoji(key, q, style) {
   }
 }
 
-// Get image by glyph
+/**
+ * Gets Image by Glyph.
+ *
+ * @param {string}  glyph - String containing an emoji.
+ * @param {"3D"|"Color"|"Flat"|"High Contrast"}  style - String specifying the style of emoji to return.
+ *
+ * @return {string} Returns the location of the emoji image relative to the base emoji folder.
+ */
 async function fromGlyph(glyph, style) {
   return await getEmoji('glyph', glyph, style);
 }
 
-// Get image by unicode
+/**
+ * Gets Image by Unicode.
+ *
+ * @param {string}  code - String containing the striped unicode of an emoji.
+ * @param {"3D"|"Color"|"Flat"|"High Contrast"}  style - String specifying the style of emoji to return.
+ *
+ * @return {string} Returns the location of the emoji image relative to the base emoji folder.
+ */
 async function fromCode(code, style) {
   code = code.toLowerCase();
   return await getEmoji('unicode', code, style);
